@@ -141,7 +141,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <header className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Spy Gadget Tracker</h1>
+        <h1 className="text-3xl font-bold">Nexus</h1>
         <button
           className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
           onClick={() => setShowForm(!showForm)}
