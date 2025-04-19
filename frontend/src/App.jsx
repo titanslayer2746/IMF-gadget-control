@@ -149,69 +149,71 @@ const App = () => {
           {showForm ? "Cancel" : "+ Add New Gadget"}
         </button>
       </header>
-
+      
       {showForm && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const gadgetToAdd = {
-              ...newGadget,
-              id: Date.now(),
-              updatedAt: new Date().toISOString()
-            };
-            setGadgets([gadgetToAdd, ...gadgets]);
-            setNewGadget({
-              name: "",
-              status: "Available",
-              successProbability: 0
-            });
-            setShowForm(false);
-          }}
-          className="bg-gray-800 p-4 rounded-lg mb-6 w-full max-w-md"
+        <div className="flex justify-center">
+          <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const gadgetToAdd = {
+            ...newGadget,
+            id: Date.now(),
+            updatedAt: new Date().toISOString()
+          };
+          setGadgets([gadgetToAdd, ...gadgets]);
+          setNewGadget({
+            name: "",
+            status: "Available",
+            successProbability: 0
+          });
+          setShowForm(false);
+        }}
+        className="bg-gray-800 p-4 rounded-lg mb-6 w-full max-w-md"
+      >
+        <h2 className="text-white text-lg font-semibold mb-4">Add New Gadget</h2>
+        <input
+          type="text"
+          placeholder="Gadget Name"
+          value={newGadget.name}
+          onChange={(e) =>
+            setNewGadget({ ...newGadget, name: e.target.value })
+          }
+          className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
+          required
+        />
+        <select
+          value={newGadget.status}
+          onChange={(e) =>
+            setNewGadget({ ...newGadget, status: e.target.value })
+          }
+          className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
         >
-          <h2 className="text-white text-lg font-semibold mb-4">Add New Gadget</h2>
-          <input
-            type="text"
-            placeholder="Gadget Name"
-            value={newGadget.name}
-            onChange={(e) =>
-              setNewGadget({ ...newGadget, name: e.target.value })
-            }
-            className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
-            required
-          />
-          <select
-            value={newGadget.status}
-            onChange={(e) =>
-              setNewGadget({ ...newGadget, status: e.target.value })
-            }
-            className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
-          >
-            <option>Available</option>
-            <option>Deployed</option>
-            <option>Destroyed</option>
-            <option>Decommissioned</option>
-          </select>
-          <input
-            type="number"
-            placeholder="Success Probability (%)"
-            value={newGadget.successProbability}
-            onChange={(e) =>
-              setNewGadget({
-                ...newGadget,
-                successProbability: parseInt(e.target.value)
-              })
-            }
-            className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-          >
-            Add Gadget
-          </button>
-        </form>
+          <option>Available</option>
+          <option>Deployed</option>
+          <option>Destroyed</option>
+          <option>Decommissioned</option>
+        </select>
+        <input
+          type="number"
+          placeholder="Success Probability (%)"
+          value={newGadget.successProbability}
+          onChange={(e) =>
+            setNewGadget({
+              ...newGadget,
+              successProbability: parseInt(e.target.value)
+            })
+          }
+          className="w-full p-2 mb-3 rounded bg-gray-700 text-white"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+        >
+          Add Gadget
+        </button>
+      </form>
+      </div>
       )}
 
       <div className="mb-4 flex flex-wrap gap-2">
